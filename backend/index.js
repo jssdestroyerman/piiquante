@@ -41,6 +41,3 @@ app.use("/api/sauces", sauceRoutes)
 app.listen(port, () => {
     console.log(`Node application started at : http://localhost:${3000}`);
 })
-
-
-// test
