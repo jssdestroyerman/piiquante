@@ -17,8 +17,11 @@ mongoose
   .then(() => console.log("Connexion à MongoDB réussie"))
   .catch(() => console.log("Connexion à MongoDB échouée"));
 
+// app = application express
 const app = express();
 const port = 3000;
+
+// rateLimit pour empêcher un trop gros nombre de requête par utilisateur.
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
@@ -27,15 +30,16 @@ const limiter = rateLimit({
 });
 
 app
-  // Cors middleware pour éviter les erreurs de connexion à l'API
-  .use(cors())
-  .use(express.json())
-  .use(limiter)
+  // helmet pour sécuriser les en-têtes HTTP
   .use(
     helmet({
       crossOriginResourcePolicy: false,
     })
-  );
+  )
+  // Cors middleware pour éviter les erreurs de connexion à l'API
+  .use(cors())
+  .use(express.json())
+  .use(limiter);
 
 // Routes API
 app.use("/images", express.static(path.join(__dirname, "images")));

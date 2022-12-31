@@ -1,5 +1,6 @@
 const passwordValidator = require("password-validator");
 
+// Vérifier les champs entrés dans l'input password, renvoi une erreur si la saisie est incorrecte
 const schema = new passwordValidator();
 
 schema
