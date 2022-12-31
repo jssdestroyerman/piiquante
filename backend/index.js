@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const userRoutes = require("./routes/user");
-const sauceRoutes = require("./routes/sauce");
 const cors = require("cors");
 const path = require("path");
 const rateLimit = require("express-rate-limit");
 require("dotenv").config();
+const helmet = require("helmet");
+
+const userRoutes = require("./routes/user");
+const sauceRoutes = require("./routes/sauce");
 
 // Connection à MongoDB via mongoose
 mongoose
@@ -28,7 +30,12 @@ app
   // Cors middleware pour éviter les erreurs de connexion à l'API
   .use(cors())
   .use(express.json())
-  .use(limiter);
+  .use(limiter)
+  .use(
+    helmet({
+      crossOriginResourcePolicy: false,
+    })
+  );
 
 // Routes API
 app.use("/images", express.static(path.join(__dirname, "images")));
