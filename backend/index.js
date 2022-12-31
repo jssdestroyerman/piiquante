@@ -10,7 +10,7 @@ require("dotenv").config();
 // Connection à MongoDB via mongoose
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@occursefullstacknodejse.qnnkqu4.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@${process.env.DB_NAME}`
   )
   .then(() => console.log("Connexion à MongoDB réussie"))
   .catch(() => console.log("Connexion à MongoDB échouée"));
@@ -37,5 +37,5 @@ app.use("/api/sauces", sauceRoutes);
 
 // écoute de l'application express sur le port 3000
 app.listen(port, () => {
-  console.log(`Node application started at : http://localhost:${3000}`);
+  console.log(`Node application started at : http://localhost:${port}`);
 });

@@ -1,0 +1,4 @@
+TOKEN="your token"
+DB_ID="mongodb username"
+DB_PASSWORD="mongodb password"
+DB_NAME="all characters after the @"
