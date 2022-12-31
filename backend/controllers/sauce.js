@@ -83,7 +83,6 @@ exports.deleteSauce = (req, res) => {
 };
 
 exports.thumbSauce = (req, res) => {
-  console.log(req.body);
   if (req.body.like === 1) {
     sauceSchema
       .updateOne(

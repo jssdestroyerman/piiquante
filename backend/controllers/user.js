@@ -6,14 +6,11 @@ require("dotenv").config();
 
 // Création d'utilisateur avec mot de passe hashé (bcrypt)
 exports.signup = (req, res) => {
-  console.log(passwordSchema.validate(req.body.password));
   if (passwordSchema.validate(req.body.password) === false) {
-    return res
-      .status(401)
-      .json({
-        error:
-          "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, et un chiffre",
-      });
+    return res.status(401).json({
+      error:
+        "Le mot de passe doit contenir au minimum 8 caractères, une majuscule, et un chiffre",
+    });
   } else {
     bcrypt
       .hash(req.body.password, 10)
