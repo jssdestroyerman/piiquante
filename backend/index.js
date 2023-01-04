@@ -9,7 +9,7 @@ const helmet = require("helmet");
 const userRoutes = require("./routes/user");
 const sauceRoutes = require("./routes/sauce");
 
-// Connection à MongoDB via mongoose
+// Connection à MongoDB via mongoose avec des variables d'environnement
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_ID}:${process.env.DB_PASSWORD}@${process.env.DB_NAME}`
