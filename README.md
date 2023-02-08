@@ -1,5 +1,5 @@
 # HotTakes
-This is the front end for Project 6 of the Web Developer path of OpenClassRooms.
+This is the front end for Project 6 of the Web Developer path of OpenClassRooms.<br>
 I worked on back end.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.4.
